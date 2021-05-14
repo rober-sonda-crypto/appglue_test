@@ -1,4 +1,5 @@
-import * as express from "express";
+import express from "express";
+import cors from "cors";
 import {
   Server,
   Path,
@@ -64,6 +65,7 @@ export class UserService {
 }
 
 let app: express.Application = express();
+app.use(cors());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 Server.buildServices(app);
