@@ -40,7 +40,7 @@ export class DefaultApi extends runtime.BaseAPI {
 
     /**
      */
-    async userServiceAllUsersRaw(): Promise<runtime.ApiResponse<Array<User>>> {
+    async userServiceAllUsersRaw(): Promise<runtime.ApiResponse<Array<object>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -52,12 +52,12 @@ export class DefaultApi extends runtime.BaseAPI {
             query: queryParameters,
         });
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(UserFromJSON));
+        return new runtime.JSONApiResponse<any>(response);
     }
 
     /**
      */
-    async userServiceAllUsers(): Promise<Array<User>> {
+    async userServiceAllUsers(): Promise<Array<object>> {
         const response = await this.userServiceAllUsersRaw();
         return await response.value();
     }

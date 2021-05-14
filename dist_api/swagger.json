@@ -4,11 +4,6 @@
 		"User": {
 			"description": "",
 			"properties": {
-				"id": {
-					"type": "number",
-					"format": "double",
-					"description": ""
-				},
 				"firstName": {
 					"type": "string",
 					"description": ""
@@ -25,7 +20,6 @@
 			},
 			"type": "object",
 			"required": [
-				"id",
 				"firstName",
 				"lastName",
 				"age"
@@ -53,7 +47,7 @@
 						"schema": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/User"
+								"type": "object"
 							}
 						}
 					}

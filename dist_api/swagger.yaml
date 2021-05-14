@@ -3,10 +3,6 @@ definitions:
     User:
         description: ""
         properties:
-            id:
-                type: number
-                format: double
-                description: ""
             firstName:
                 type: string
                 description: ""
@@ -19,7 +15,6 @@ definitions:
                 description: ""
         type: object
         required:
-            - id
             - firstName
             - lastName
             - age
@@ -41,7 +36,7 @@ paths:
                     schema:
                         type: array
                         items:
-                            $ref: '#/definitions/User'
+                            type: object
             description: ""
             parameters: []
         post:

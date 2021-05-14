@@ -21,12 +21,6 @@ import { exists, mapValues } from '../runtime';
 export interface User {
     /**
      * 
-     * @type {number}
-     * @memberof User
-     */
-    id: number;
-    /**
-     * 
      * @type {string}
      * @memberof User
      */
@@ -55,7 +49,6 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
     }
     return {
         
-        'id': json['id'],
         'firstName': json['firstName'],
         'lastName': json['lastName'],
         'age': json['age'],
@@ -71,7 +64,6 @@ export function UserToJSON(value?: User | null): any {
     }
     return {
         
-        'id': value.id,
         'firstName': value.firstName,
         'lastName': value.lastName,
         'age': value.age,
