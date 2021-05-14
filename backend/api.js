@@ -91,7 +91,7 @@ var UserService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, session.load("users/" + id)];
+                        return [4 /*yield*/, session.load("" + user.id)];
                     case 1:
                         current_user = _a.sent();
                         current_user.firstName = user.firstName;
@@ -103,6 +103,7 @@ var UserService = /** @class */ (function () {
                         return [3 /*break*/, 4];
                     case 3:
                         error_1 = _a.sent();
+                        console.log("Hello:", error_1);
                         return [2 /*return*/, "failed"];
                     case 4: return [2 /*return*/, "success"];
                 }
@@ -143,7 +144,7 @@ var UserService = /** @class */ (function () {
         Path(":id"),
         __param(0, PathParam("id")),
         __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number, Object]),
+        __metadata("design:paramtypes", [String, Object]),
         __metadata("design:returntype", Promise)
     ], UserService.prototype, "updateUser", null);
     __decorate([

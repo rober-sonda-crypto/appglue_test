@@ -4,6 +4,10 @@
 		"User": {
 			"description": "",
 			"properties": {
+				"id": {
+					"type": "string",
+					"description": ""
+				},
 				"firstName": {
 					"type": "string",
 					"description": ""
@@ -134,8 +138,7 @@
 						"in": "path",
 						"name": "id",
 						"required": true,
-						"type": "number",
-						"format": "double"
+						"type": "string"
 					},
 					{
 						"description": "",

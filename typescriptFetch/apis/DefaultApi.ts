@@ -29,7 +29,7 @@ export interface UserServiceGetUserRequest {
 }
 
 export interface UserServiceUpdateUserRequest {
-    id: number;
+    id: string;
     user: User;
 }
 
@@ -151,7 +151,7 @@ export class DefaultApi extends runtime.BaseAPI {
 
     /**
      */
-    async userServiceUpdateUser(id: number, user: User): Promise<object> {
+    async userServiceUpdateUser(id: string, user: User): Promise<object> {
         const response = await this.userServiceUpdateUserRaw({ id: id, user: user });
         return await response.value();
     }

@@ -24,6 +24,12 @@ export interface User {
      * @type {string}
      * @memberof User
      */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
     firstName: string;
     /**
      * 
@@ -49,6 +55,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
     }
     return {
         
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'firstName': json['firstName'],
         'lastName': json['lastName'],
         'age': json['age'],
@@ -64,6 +71,7 @@ export function UserToJSON(value?: User | null): any {
     }
     return {
         
+        'id': value.id,
         'firstName': value.firstName,
         'lastName': value.lastName,
         'age': value.age,

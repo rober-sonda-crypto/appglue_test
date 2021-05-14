@@ -19,6 +19,7 @@ store.initialize();
 const session = store.openSession();
 
 interface User {
+  id?: string,
   firstName: string;
   lastName: string;
   age: number;
@@ -41,15 +42,16 @@ export class UserService {
 
   @PUT
   @Path(":id")
-  async updateUser(@PathParam("id") id: number, user: User): Promise<any> {
+  async updateUser(@PathParam("id") id: string, user: User): Promise<any> {
     try {
-      let current_user: User = await session.load(`users/${id}`);
+      let current_user: User = await session.load(`${user.id}`);
       current_user.firstName = user.firstName;
       current_user.lastName = user.lastName;
       current_user.age = user.age;
 
       await session.saveChanges();
     } catch (error) {
+      console.log("Hello:", error);
       return "failed";
     }
 
