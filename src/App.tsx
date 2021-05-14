@@ -7,7 +7,7 @@ import { DefaultApi } from "./typescriptFetch/apis/DefaultApi";
 import { Configuration } from "./typescriptFetch/runtime";
 
 const api = new DefaultApi(
-  new Configuration({ basePath: "http://localhost:4000" })
+  new Configuration()
 );
 
 interface MainState {

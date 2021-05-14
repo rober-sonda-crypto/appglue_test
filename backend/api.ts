@@ -10,15 +10,14 @@ import {
 } from "typescript-rest";
 import { DocumentStore } from "ravendb";
 import swaggerDocument from "../dist_api/swagger.json";
-import { swaggerUi } from "swagger-ui-express";
+import * as swaggerUi from "swagger-ui-express";
 import { Tags } from "typescript-rest-swagger";
 
-const store = new DocumentStore("http://live-test.ravendb.net", "appglue_test");
+const store = new DocumentStore("http://localhost:8080", "appglue_test");
 store.initialize();
 const session = store.openSession();
 
 interface User {
-  id: number;
   firstName: string;
   lastName: string;
   age: number;
@@ -27,8 +26,8 @@ interface User {
 @Path("users")
 export class UserService {
   @GET
-  async allUsers(): Promise<Array<User>> {
-    let users: User[] = await session.load("users");
+  async allUsers(): Promise<Array<object>> {
+    let users: object[] = await session.query({ collection: "@empty" }).all();
     return users;
   }
 
@@ -69,6 +68,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 Server.buildServices(app);
 
-app.listen(3000, function () {
-  console.log("Rest Server listening on port 3000!");
+app.listen(4000, function () {
+  console.log("Rest Server listening on port 4000!");
 });
